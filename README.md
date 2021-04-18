@@ -15,19 +15,19 @@ The queue can accept any pointer to store.
 #include "queue.h"
 
 int main(void) {
-	queue_t *queue = create_queue();
+  queue_t *queue = create_queue();
 
-	int *array = (int *)malloc(sizeof(int) * 100);
+  int *array = (int *)malloc(sizeof(int) * 100);
 	
-	if (enqueue(queue, array) == -1) {
-		// handle error case.
-	}
+  if (enqueue(queue, array) == -1) {
+    // handle error case.
+  }
 
-	int *ptr = (int *)dequeue(queue);
+  int *ptr = (int *)dequeue(queue);
 
-	if (ptr != NULL) {
-		// do something;
-	}
+  if (ptr != NULL) {
+    // do something;
+  }
 }
 
 ```
