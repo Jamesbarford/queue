@@ -7,6 +7,7 @@ typedef struct qnode_t {
 } qnode_t;
 
 typedef struct queue_t {
+	int count;
 	struct qnode_t *next;
 	struct qnode_t *prev;
 } queue_t;

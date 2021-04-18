@@ -22,6 +22,7 @@ void walk_q(queue_t *q) {
 		n = n->next;
 	}
 }
+
 int run_test(char *name, int(*test_func)(void)) {
 	int passed = test_func();
 	if (passed) {
@@ -83,6 +84,11 @@ int should_return_correct_item() {
 	int *r_4 = ((int *)dequeue(queue));
 	if (r_4 != p_4)
 		retval = FAIL;
+
+	dequeue(queue);
+	dequeue(queue);
+	dequeue(queue);
+	dequeue(queue);
 
 	(void)free(r_1);
 	(void)free(r_2);

@@ -10,6 +10,7 @@ The queue can accept any pointer to store.
 
 - `enqueue` Successful insertion returns `0`. Failure returns `-1`.
 - `dequeue` will return the first inserted item or `NULL` if the queue is empty.
+- `queue->count` number of items in the queue
 
 ```c
 #include "queue.h"
@@ -23,7 +24,13 @@ int main(void) {
     // handle error case.
   }
 
+  // queue count will be 1
+  queue->count;
+
   int *ptr = (int *)dequeue(queue);
+  
+  // queue count will be 0
+  queue->count;
 
   if (ptr != NULL) {
     // do something;

@@ -8,15 +8,16 @@
 #include "queue.h"
 
 queue_t *create_queue() {
-	queue_t *qnode;
+	queue_t *queue;
 
-	if ((qnode = (queue_t *)malloc(sizeof(queue_t))) == NULL)
+	if ((queue = (queue_t *)malloc(sizeof(queue_t))) == NULL)
 		return NULL;
 
-	qnode->next  = NULL;
-	qnode->prev  = NULL;
+	queue->next = NULL;
+	queue->prev = NULL;
+	queue->count = 0;
 
-	return qnode;
+	return queue;
 }
 
 int enqueue(queue_t *queue, void *q_obj) {
@@ -36,7 +37,9 @@ int enqueue(queue_t *queue, void *q_obj) {
 		qnode->next = queue->prev;
 		// put on the back of the queue
 		queue->prev = qnode;
-	}	
+	}
+
+	queue->count++;
 
 	return 0;
 }
@@ -51,6 +54,14 @@ void *dequeue(queue_t *queue) {
 
 	if (tmp)
 		(void)free(tmp);
+
+	queue->count--;
+	
+	if (queue->count == 0) {
+		queue->next = NULL;
+		queue->prev = NULL;
+	}
+
 	return retval;
 }
 
